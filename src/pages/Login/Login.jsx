@@ -31,6 +31,7 @@ const Login = () => {
     function openModal() {
         setIsOpen(true)
     }
+    console.log(process.env.REACP_APP_API_KEY)
 
     return (
         <div className='flex flex-col h-screen'>
