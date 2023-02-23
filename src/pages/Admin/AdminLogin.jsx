@@ -5,7 +5,7 @@ import logo from '../../assets/logo.png'
 import { Link, useNavigate } from 'react-router-dom'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
 import { db } from '../../config/firebase';
-import { collection, getDocs, query, where } from 'firebase/firestore';
+import { addDoc, collection, getDocs, query, where } from 'firebase/firestore';
 
 const AdminLogin = () => {
 
@@ -49,12 +49,11 @@ const AdminLogin = () => {
         }
     }
 
+    //add admin to db
     // const encryptPassword = async () => {
     //     const salt = await bcrypt.genSalt()
     //     const passwordHash = await bcrypt.hash(input.password, salt)
     //     console.log("🚀 ~ file: AdminLogin.jsx:42 ~ enc ~ passwordHash", passwordHash)
-    //     const compare = await bcrypt.compare(input.password, "$2a$10$jckOpl5enXSFmMCpwkN1fODPdgzIrO9DIRwLgV.jxOEKRMA.dRxwC")
-    //     console.log("🚀 ~ file: AdminLogin.jsx:45 ~ encryptPassword ~ compare", compare)
 
     //     const userRef = collection(db, "users")
     //     const addUser = await addDoc(userRef, { email: input.username, password: passwordHash })
@@ -63,7 +62,7 @@ const AdminLogin = () => {
 
     return (
         <div className='flex  h-screen'>
-
+            {/* <button type="button" onClick={encryptPassword} >Encrypt and Add admin account</button> */}
             <div className="container mx-auto px-4 h-full">
                 <div className="flex content-center items-center justify-center h-full">
                     <div className="w-full lg:w-4/12 px-4">
@@ -74,6 +73,13 @@ const AdminLogin = () => {
                                 </div>
                                 <div className="text-white text-lg text-center my-3 font-bold ">
                                     Admin Login
+                                </div>
+                                <div className="text-slate-100 mb-3 font-bold">
+                                    <small className='flex flex-col justify-center items-start'>
+                                        <span>username: admin</span>
+                                        <span>pass: adminadmin</span>
+                                    </small>
+                                    <small>Home page <a className='underline' href="/">click here.</a></small>
                                 </div>
                                 <form onSubmit={handleLogin} >
                                     <div className=" w-full mb-3">
@@ -122,7 +128,6 @@ const AdminLogin = () => {
                                             </span>
                                         </label>
                                     </div>
-
                                     <div className="text-center mt-6">
                                         <button
                                             className={`${styles.bg_accent} text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg hover:bg-red-600 outline-none focus:outline-none mr-1 mb-1 w-full`}
@@ -132,17 +137,12 @@ const AdminLogin = () => {
                                             {!loading ? "Log in" : "Logging in..."}
                                         </button>
                                     </div>
-
-
                                 </form>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
-
-
         </div>
     )
 }

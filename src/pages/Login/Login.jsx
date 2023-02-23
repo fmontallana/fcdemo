@@ -74,6 +74,13 @@ const Login = () => {
                                         <div className="text-gray-500 text-center mb-3 font-bold">
                                             <small>Or sign in with credentials</small>
                                         </div>
+                                        <div className="text-gray-500 mb-3 font-bold">
+                                            <small className='flex flex-col justify-center items-start'>
+                                                <span>email: usehmj@arxxwalls.com</span>
+                                                <span>pass: demodemo</span>
+                                            </small>
+                                            <small>Admin page <a className='underline' href="/admin">click here.</a></small>
+                                        </div>
                                         <form onSubmit={handleSubmit}>
                                             <div className="relative w-full mb-3">
                                                 <label
